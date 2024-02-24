@@ -2,7 +2,8 @@ import express from 'express';
 import logger from 'morgan';
 import cors from 'cors';
 
-import authRouter from './routes/api/authentication';
+import authRouter from './routes/api/authentication.js';
+import blogRouter from './routes/api/blogs.js';
 
 const app = express()
 
@@ -13,6 +14,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/api/auth', authRouter)
+app.use('/', blogRouter)
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Not found' })
