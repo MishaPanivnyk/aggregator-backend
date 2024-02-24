@@ -19,7 +19,7 @@
 
   router.post('/blogs/image', upload.single('image'), async (req, res) => {
     try {
-      res.json({ imageUrl: req.file.path });
+      res.json({ imageUrl: "/uploads/" + req.file.filename, });
     } catch (err) {
       res.status(400).json({ message: err.message });
     }
