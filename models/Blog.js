@@ -5,6 +5,7 @@ const blogSchema = new mongoose.Schema({
   content: String,
   author: String,
   imageUrl: String,
+  category: String,
   createdAt: { type: Date, default: Date.now }
 }, {collection: 'blogs', versionKey: false});
 
