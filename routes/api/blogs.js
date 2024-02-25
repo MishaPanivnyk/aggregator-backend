@@ -37,7 +37,6 @@ router.post('/blogs', upload.single("image"), async (req, res) => {
   try {
     const newBlog = await blog.save();
     res.status(201).json(newBlog);
-    res.redirect('/blogs')
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
