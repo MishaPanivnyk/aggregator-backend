@@ -5,6 +5,7 @@ import cors from 'cors';
 import authRouter from './routes/api/authentication.js';
 import blogRouter from './routes/api/blogs.js';
 
+
 const app = express()
 
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short'
