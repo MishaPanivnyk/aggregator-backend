@@ -26,8 +26,6 @@ router.get('/blogs', async (req, res) => {
   }
 })
 
-
-
 router.post('/blogs', upload.single("image"), async (req, res) => {
   const blog = new Blog({
     title: req.body.title,
