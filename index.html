@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avatar Uploader</title>
+</head>
+<body>
+    <form id="blogForm" enctype="multipart/form-data">
+        <input type="text" name="title" placeholder="Title">
+        <textarea name="content" placeholder="Content"></textarea>
+        <input type="file" name="image">
+        <input type="text" name="author" placeholder="Author">
+        <input type="text" name="category" placeholder="Category">
+        <button type="submit">Submit</button>
+      </form>
+
+<script>document.getElementById('blogForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+  
+    const formData = new FormData();
+    formData.append('title', document.querySelector('input[name="title"]').value);
+    formData.append('content', document.querySelector('textarea[name="content"]').value);
+    formData.append('image', document.querySelector('input[name="image"]').files[0]);
+    formData.append('author', document.querySelector('input[name="author"]').value);
+    formData.append('category', document.querySelector('input[name="category"]').value);
+  
+    try {
+      const response = await fetch('/blogs', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await response.json();
+      console.log(data); // здесь будет ответ от сервера, включая ссылку на загруженное изображение
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  });</script>
+</body>
+</html>
