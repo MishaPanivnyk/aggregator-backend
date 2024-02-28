@@ -18,7 +18,7 @@ router.post('/blogs', upload.single("image"), async (req, res) => {
     title: req.body.title,
     content: req.body.content,
     author: req.body.author,
-    imageUrl: req.body.imageUrl
+    imageUrl: req.body.imageUrl,
     category: req.body.category
   });
   try {
