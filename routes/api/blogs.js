@@ -1,19 +1,6 @@
 import express from 'express';
 import Blog from '../../models/Blog.js'
-import multer from 'multer'
 import path from 'path'
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/blogImg")
-  },
-  filename: (req, file, cb) => {
-    console.log(file)
-    cb(null, Date.now() + path.extname(file.originalname));
-  }
-})
-
-const upload = multer({ storage: storage })
 
 const router = express.Router();
 
@@ -31,7 +18,7 @@ router.post('/blogs', upload.single("image"), async (req, res) => {
     title: req.body.title,
     content: req.body.content,
     author: req.body.author,
-    imageUrl: req.file ? req.file.filename : null,
+    imageUrl: req.body.imageUrl
     category: req.body.category
   });
   try {
