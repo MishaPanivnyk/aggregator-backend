@@ -5,6 +5,7 @@ import cors from 'cors';
 import authRouter from './routes/api/authentication.js';
 import blogRouter from './routes/api/blogs.js';
 
+// AAAAA
 
 const app = express()
 
